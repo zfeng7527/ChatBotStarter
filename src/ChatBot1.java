@@ -15,11 +15,12 @@ public class ChatBot1
 
 	public void chatLoop()
 	{
+		System.out.println();
 		Scanner in = new Scanner (System.in);
 		System.out.println (getGreeting());
 		String statement = in.nextLine();
 
-		while (!statement.equals("Bye"))
+		while (!(statement.contains(" no ") && statement.contains(" money ")))
 		{
 
 			System.out.println(getResponse(statement));
@@ -27,6 +28,7 @@ public class ChatBot1
 
 
 		}
+		System.out.println(" Sir, you don't understand-- \n\n");
 
 	}
 	/**
@@ -35,7 +37,11 @@ public class ChatBot1
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "Hello, I'm a very important royal administrator of Nigeria.\n" +
+				"His royal highness: Prince Nigeria is interested in a highly profitable business investment, " +
+				"that requires a small initial fund from investors.  " +
+				"If you front a payment of at least $500, he can garentee returns of up to 5 million dollars.\n\n" +
+				"Do you accept?";
 	}
 	
 	/**
@@ -53,12 +59,11 @@ public class ChatBot1
 		{
 			response = "Say something, please.";
 		}
-		String[] questions = {" owe", "You have to help me, I need an immediate cash widthdrawal.",
-				" believe ", "Please sir, you have to believe me, I am the real prince of Nigeria."};
-		for(int i = 0; i < questions.length; i += 2){
+		String[] questions = {"owe", "You have to help me, I need an immediate cash widthdrawal.",
+				"believe", "Please sir, you have to believe me, I am the real prince of Nigeria."};
+		for(int i = 0; i < questions.length-1; i += 2){
 			String trigger = questions[i+1];
 			String question = questions[i];
-
 			transformStatement(statement, trigger, question);
 		}
 		return response;

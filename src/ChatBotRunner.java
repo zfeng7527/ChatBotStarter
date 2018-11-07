@@ -17,8 +17,6 @@ public class ChatBotRunner
 		ChatBot2 chatbot2 = new ChatBot2();
 		ChatBot3 chatbot3 = new ChatBot3();
 
-		System.out.println("Welcome to the chatbot, nice to meet you.");
 		chatbot1.chatLoop();
-
 	}
 }
