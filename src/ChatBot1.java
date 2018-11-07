@@ -13,23 +13,17 @@ public class ChatBot1
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
 
-	/**
-	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
-	 * @param statement the statement typed by the user
-	 */
-	public void chatLoop(String statement)
+	public void chatLoop()
 	{
 		Scanner in = new Scanner (System.in);
 		System.out.println (getGreeting());
-
+		String statement = in.nextLine();
 
 		while (!statement.equals("Bye"))
 		{
 
-
-			statement = in.nextLine();
-			//getResponse handles the user reply
 			System.out.println(getResponse(statement));
+			statement = in.nextLine();
 
 
 		}
@@ -59,10 +53,10 @@ public class ChatBot1
 		{
 			response = "Say something, please.";
 		}
-		String[] triggers = {"I want to"};
-		String[] questions = {"Why do you want to "};
-		for(int i = 0; i < triggers.length; i++){
-			String trigger = triggers[i];
+		String[] questions = {" owe", "You have to help me, I need an immediate cash widthdrawal.",
+				" believe ", "Please sir, you have to believe me, I am the real prince of Nigeria."};
+		for(int i = 0; i < questions.length; i += 2){
+			String trigger = questions[i+1];
 			String question = questions[i];
 
 			transformStatement(statement, trigger, question);
@@ -88,38 +82,15 @@ public class ChatBot1
 			int psn = findKeyword(statement, triggerphrase, 0);
 
 			String restOfStatement = statement.substring(psn + triggerphrase.length()).trim();
-			System.out.println(questionphrase + restOfStatement + "?");
+			if(statement.substring(statement.length() - 1).contains(".")){
+				System.out.println(questionphrase + restOfStatement + "?");
+			}
+			else{
+				System.out.println(questionphrase + "?");
+			}
 		}
 	}
 
-	/**
-	 * Take a statement with "I <something> you" and transform it into 
-	 * "Why do you <something> me?"
-	 * @param statement the user statement, assumed to contain "I" followed by "you"
-	 * @return the transformed statement
-	 */
-	private String transformIYouStatement(String statement)
-	{
-		//  Remove the final period, if there is one
-		statement = statement.trim();
-		String lastChar = statement.substring(statement
-				.length() - 1);
-		if (lastChar.equals("."))
-		{
-			statement = statement.substring(0, statement
-					.length() - 1);
-		}
-		
-		int psnOfI = findKeyword (statement, "I", 0);
-		int psnOfYou = findKeyword (statement, "you", psnOfI);
-		
-		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
-		return "Why do you " + restOfStatement + " me?";
-	}
-	
-
-	
-	
 	/**
 	 * Search for one word in phrase. The search is not case
 	 * sensitive. This method will check that the given goal
