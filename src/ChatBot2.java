@@ -113,7 +113,10 @@ public class ChatBot2
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
-		}	
+		}
+		else if (findKeyword(statement, "eblieve",0)>=0){
+
+		}
 		else
 		{
 			response = getRandomResponse();
@@ -290,7 +293,7 @@ public class ChatBot2
 		{	
 			return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
 			if (emotion < -10){
-			    System.out.println("Good bye.")
+			    System.out.println("Good bye.");
             }
 		}	
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
