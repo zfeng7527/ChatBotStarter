@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class ChatBot2
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
-	int emotion = 0;
+	int emotion = 10;
 
 
 	/**
@@ -95,15 +95,19 @@ public class ChatBot2
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "YES!";
+			response = "Please, I am in deep need of help!";
                 	emotion--;
 		}
 		
-		else if (findKeyword(statement, "levin") >= 0)
+		else if (findKeyword(statement, "money") >= 0)
 		{
-			response = "More like LevinTheDream amiright?";
+			response = "Yes, I need money.";
 			emotion++;
 		}
+		else if (findKeyword(statement,"Prince")){
+			response = "I am the REAL prince of Nigeria."
+		}
+		else if (findKeyword(statement, ""))
 
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
@@ -285,14 +289,14 @@ public class ChatBot2
 	private String getRandomResponse ()
 	{
 		Random r = new Random ();
-		if (emotion == 0)
+		if (emotion == 10)
 		{	
 			return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
 		}
-		if (emotion < 0)
+		if (emotion < 10)
 		{	
 			return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
-			if (emotion < -10){
+			if (emotion = 0){
 			    System.out.println("Good bye.");
             }
 		}	
@@ -308,6 +312,6 @@ public class ChatBot2
 			"Could you say that again?"
 	};
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "Do you want your money or not?!"};
-	private String [] randomHappyResponses = {"My Family will be very happy.", "", "You make me feel like a brand new pair of shoes."};
+	private String [] randomHappyResponses = {"My Family will be very happy.", "Wakanda Forever", "You make me feel like a brand new pair of shoes."};
 	
 }
