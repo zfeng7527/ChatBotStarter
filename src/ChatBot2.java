@@ -296,7 +296,7 @@ public class ChatBot2
 		if (emotion < 10)
 		{	
 			return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
-			if (emotion = 0){
+			if (emotion == 0){
 			    System.out.println("Good bye.");
             }
 		}	
@@ -304,14 +304,14 @@ public class ChatBot2
 	}
 	
 	private String [] randomNeutralResponses = {"Interesting, tell me more",
-			"Hmmm.",
-			"Do you really think so?",
-			"You don't say.",
-			"It's all boolean to me.",
+			"Interesting but, do you have any money on you?",
+			"Quickly I need your help.",
+			"I do not understand.",
+			"Please stop.",
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
 	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "Do you want your money or not?!"};
+	private String [] randomAngryResponses = {"I hope you have a bad day.", "My family will starve to death.", "Do you want your money or not?!"};
 	private String [] randomHappyResponses = {"My Family will be very happy.", "Wakanda Forever", "You make me feel like a brand new pair of shoes."};
 	
 }
