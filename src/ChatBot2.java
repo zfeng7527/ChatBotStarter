@@ -114,8 +114,8 @@ public class ChatBot2
 		{
 			response = transformIWantStatement(statement);
 		}
-		else if (findKeyword(statement, "eblieve",0)>=0){
-
+		else if (findKeyword(statement, "believe",0)>=0){
+            response = "You must beleive me, I am the REAL nigerain prince."
 		}
 		else
 		{
