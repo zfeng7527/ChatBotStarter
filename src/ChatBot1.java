@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -20,7 +19,7 @@ public class ChatBot1
 		System.out.println (getGreeting());
 		String statement = in.nextLine();
 
-		while (!(statement.contains(" no ") && statement.contains(" money ")))
+		while (!(statement.contains(" no ") || statement.contains(" money ") || statement.contains("Bye")))
 		{
 
 			System.out.println(getResponse(statement));
@@ -66,11 +65,14 @@ public class ChatBot1
 				"scammer", "I am NOT a scammer!",
 				"scamming", "How dare you insult the royal prince of Nigeria"};
 		for(int i = 0; i < questions.length-1; i += 2){
-			String trigger = questions[i+1];
-			String question = questions[i];
-			transformStatement(statement, trigger, question);
+			String trigger = questions[i];
+			String question = questions[i+1];
+			if(statement.contains(trigger)){
+			    return transformStatement(statement, trigger, question);
+            }
+
 		}
-		return response;
+		return getRandomResponse();
 	}
 	
 	/**
@@ -79,26 +81,25 @@ public class ChatBot1
 	 * @param statement the user statement, assumed to contain "I want to"
 	 * @return the transformed statement
 	 */
-	private void transformStatement(String statement, String triggerphrase, String questionphrase)
-	{
-		if (findKeyword(statement, triggerphrase) >= 0) {
+	private String transformStatement(String statement, String triggerphrase, String questionphrase) {
+        if (findKeyword(statement, triggerphrase) >= 0) {
 
-			statement = statement.trim();
-			String lastChar = statement.substring(statement.length() - 1);
+            statement = statement.trim();
+            String lastChar = statement.substring(statement.length() - 1);
 
-			if (lastChar.equals(".")) statement = statement.substring(0, statement.length() - 1);
+            if (lastChar.equals(".")) statement = statement.substring(0, statement.length() - 1);
 
-			int psn = findKeyword(statement, triggerphrase, 0);
+            int psn = findKeyword(statement, triggerphrase, 0);
 
-			String restOfStatement = statement.substring(psn + triggerphrase.length()).trim();
-			if(statement.substring(statement.length() - 1).contains(".")){
-				System.out.println(questionphrase + restOfStatement + "?");
-			}
-			else{
-				System.out.println(questionphrase + "?");
-			}
-		}
-	}
+            String restOfStatement = statement.substring(psn + triggerphrase.length()).trim();
+            if (statement.substring(statement.length() - 1).contains(".")) {
+                return (questionphrase + restOfStatement);
+            } else {
+                return (questionphrase + "?");
+            }
+        }
+        return "Trigger not found";
+    }
 
 	/**
 	 * Search for one word in phrase. The search is not case
