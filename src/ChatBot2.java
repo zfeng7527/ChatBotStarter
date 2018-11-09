@@ -104,10 +104,15 @@ public class ChatBot2
 			response = "Yes, I need money.";
 			emotion++;
 		}
-		else if (findKeyword(statement,"Prince")){
-			response = "I am the REAL prince of Nigeria."
+		else if (findKeyword(statement,"Prince")>=0){
+			response = "I am the REAL prince of Nigeria.";
 		}
-		else if (findKeyword(statement, ""))
+		else if (findKeyword(statement, "mean")>=0){
+			response = "Wut you mean?";
+		}
+		else if (findKeyword(statement, "Fraud")>=0){
+			response = "Fraud! I will tell you fraud my friend, I've been asking for help all this time but, there are these people out pretending to be me and it makes it very hard to get help these days!";
+		}
 
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
