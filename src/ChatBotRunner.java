@@ -15,10 +15,10 @@ public class ChatBotRunner
 	{
 		ChatBot1 chatbot1 = new ChatBot1();
 		ChatBot2 chatbot2 = new ChatBot2();
-		ChatBot3 chatbot3 = new ChatBot3();
+		//ChatBot3 chatbot3 = new ChatBot3();
 
 		chatbot1.chatLoop();
 		chatbot2.chatLoop();
-		chatbot3.chatLoop();
+		//chatbot3.chatLoop();
 	}
 }
