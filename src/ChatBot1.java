@@ -60,7 +60,11 @@ public class ChatBot1
 			response = "Say something, please.";
 		}
 		String[] questions = {"owe", "You have to help me, I need an immediate cash widthdrawal.",
-				"believe", "Please sir, you have to believe me, I am the real prince of Nigeria."};
+				"believe", "Please sir, you have to believe me, I am the real prince of Nigeria.",
+				"I don't owe you anything", "You owe it to the good men and women of Nigeria",
+				"scam", "How dare you accuse me of such a heinous crime!",
+				"scammer", "I am NOT a scammer!",
+				"scamming", "How dare you insult the royal prince of Nigeria"};
 		for(int i = 0; i < questions.length-1; i += 2){
 			String trigger = questions[i+1];
 			String question = questions[i];
@@ -182,26 +186,16 @@ public class ChatBot1
 	private String getRandomResponse ()
 	{
 		Random r = new Random ();
-		if (emotion == 0)
-		{	
-			return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
-		}
-		if (emotion < 0)
-		{	
-			return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
-		}	
-		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
+		return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
 	}
 	
-	private String [] randomNeutralResponses = {"Interesting, tell me more",
-			"Hmmm.",
-			"Do you really think so?",
-			"You don't say.",
-			"It's all boolean to me.",
-			"So, would you like to go for a walk?",
-			"Could you say that again?"
+	private String [] randomNeutralResponses = {"I am the real prince of Nigeria",
+			"If you back out now, you'll be missing out on 5 million dollars!",
+			"As a show of good faith, I can reduce your initial investment to 300 dollars.",
+			"I can pay you in untraceable gold bricks which are very gold and very untraceable.",
+			"Without your help, thousands of children in...\nUm...\nNigeria, will starve!",
+			"This is not a scam.",
+			"I'm going to need that deposit by April 17th.",
+			"You're invited to the royal banquet in Nigeria, but I'll need an additional payment of $700 to cover travel expenses."
 	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
-	
 }
