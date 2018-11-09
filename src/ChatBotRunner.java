@@ -18,5 +18,7 @@ public class ChatBotRunner
 		ChatBot3 chatbot3 = new ChatBot3();
 
 		chatbot1.chatLoop();
+		chatbot2.chatLoop();
+		chatbot3.chatLoop();
 	}
 }
