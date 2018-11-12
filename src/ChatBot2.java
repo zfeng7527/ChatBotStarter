@@ -24,7 +24,7 @@ public class ChatBot2
 		Scanner in = new Scanner (System.in);
 		System.out.println (getGreeting());
 		String statement = in.nextLine();
-		while (!statement.equals("Bye"))
+		while ((!statement.equals("Bye"))||(!statement.equals("not interested")))
 		{
 
 
@@ -46,15 +46,15 @@ public class ChatBot2
 				"\n" +
 				"This letter is not intended to to cause any embarrassment but just to contact your esteem self-following the knowledge of your high repute and trustworthiness.\n" +
 				"\n" +
-				"I am Mohammed Abacha,the son of the late Nigerian Head of State who died on the 8th of June 1998.If you are conversant with world news,you would understand better,while I got your contacts through my personal research.Please,I need your assistance to make this happen and please; do not undermine it because it will also be a source of upliftment to you also.You have absolutely nothing to loose in assisting us instead, you have so much to gain.\n" +
+				"I am Mohammed Abacha,the son of the late Nigerian Head of State who died on the 8th of June 1998.If you are conversant with world news,you would understand better,\n"+ "while I got your contacts through my personal research.Please,I need your assistance to make this happen and please; do not undermine it\n"+"because it will also be a source of upliftment to you also.You have absolutely nothing to loose in assisting us instead, you have so much to gain.\n" +
 				"\n" +
-				"The then head of state General Sani Abacha,transferred the money through a Lebanese businessman,Chagoury and a Jewish business man,Mark Rissar to bank accounts overseas,Instead,he used PERSONAL IDENTIFICATION NUMBERS (PIN) and declared the contents as Bearer Bonds and Treasury Bills. Also the firm issued him with a certificate of deposit of the consignments notes, which I have these information in my custody now.\n" +
+				"The then head of state General Sani Abacha,transferred the money through a Lebanese businessman,Chagoury and a Jewish business man,Mark Rissar to bank accounts overseas,\n"+"Instead,he used PERSONAL IDENTIFICATION NUMBERS (PIN) and declared the contents as Bearer Bonds and Treasury Bills. Also the firm issued\n"+"him with a certificate of deposit of the consignments notes, which I have these information in my custody now.\n" +
 				"\n" +
-				"You must have heard over the media reports and the Internet on the recovery of various huge sums of money deposited by my late father in different Banks and security firms abroad. Some of these banks and security firms willingly gave-/divulge their banking secrets and disclosed to the present civilian administration of Chief Olusegun Obasanjo,about my family's cash lodgement and monetary transactions with them.\n" +
+				"You must have heard over the media reports and the Internet on the recovery of various huge sums of money deposited by my late father in different Banks and security firms abroad.\n"+" Some of these banks and security firms willingly gave-/divulge their banking secrets and disclosed to the present civilian administration\n"+ "of Chief Olusegun Obasanjo,about my family's cash lodgement and monetary transactions with them.\n" +
 				"\n" +
-				"Please my dear,I repose great confidence in you and I hope you will not betray my confidence in you.I have secretly deposited the sum of $30,000,000.00 with a security firm abroad whose name is withheld for now until we open communications.The money is contained in a metal box consignment with Security Deposit Number 009GM.\n" +
+				"Please my dear,I repose great confidence in you and I hope you will not betray my confidence in you.I have secretly deposited the sum of $30,000,000.00 with a security firm abroad whose\n" + "name is withheld for now until we open communications.The money is contained in a metal box consignment with Security Deposit Number 009GM.\n" +
 				"\n" +
-				"I shall be grateful if you could receive this fund into your Bank account for safekeeping. This arrangement is known to you and my junior brother (Abbas) only. So I will deal directly with you.I am proposing a 20% share of the fund to you for your kind assistance.I shall provide for you all the documents of the fund deposit with the security firm, and raise a power of attorney to enable you claim and receive this fund into your bank account.I have done a thorough homework and fine-tuned the best way to create you as the beneficiary to the funds and effect the transfer accordingly.Is rest assured that the modalities I have resolved to finalize the entire project guarantees our safety and the successful transfer of the funds.So, you will be absolutely right when you say that this project is risk free and viable.If you are capable and willing to assist, contact me at once via email with following details:\n" +
+				"I shall be grateful if you could receive this fund into your Bank account for safekeeping. This arrangement is known to you and my junior brother (Abbas) only. So I will deal directly with you.\n"+"I am proposing a 20% share of the fund to you for your kind assistance.I shall provide for you all the documents of the fund deposit with\n"+ "the security firm, and raise a power of attorney to enable you claim and receive this fund into your bank account.\n"+"I have done a thorough homework and fine-tuned the best way to create you as the beneficiary to the funds and effect the transfer accordingly.\n"+"Is rest assured that the modalities I have resolved to finalize the entire project guarantees our safety and the successful transfer of the funds.\n"+"So, you will be absolutely right when you say that this project is risk free and viable.If you are capable and willing to assist, contact me at once via email with following details:\n" +
 				"\n" +
 				"1. YOUR NAME\n" +
 				"2. POSTAL ADDRESS\n" +
@@ -116,6 +116,12 @@ public class ChatBot2
 		else if (findKeyword(statement, "believe",0)>=0){
             response = "You must beleive me, I am the REAL nigerain prince.";
 		}
+		else if (findKeyword(statement,"I need to",0)>=0){
+			response = transformINeedToStatement(statement);
+		}
+		else if((findKeyword(statement, "again",0)>=0)||(findKeyword(statement,"already",0)>=0)){
+			response = "You mean to say you already met me? I assure you that I am a different person, although there is this imposter going around asking for money.";
+		}
 		else
 		{
 			response = getRandomResponse();
@@ -144,6 +150,21 @@ public class ChatBot2
 		int psn = findKeyword (statement, "I want to", 0);
 		String restOfStatement = statement.substring(psn + 9).trim();
 		return "Why do you want to " + restOfStatement + "?";
+	}
+
+	private String transformINeedToStatement(String statement)
+	{
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		int psn = findKeyword (statement, "I need to", 0);
+		String restOfStatement = statement.substring(psn + 9).trim();
+		return "Why do you need to " + restOfStatement + "?";
 	}
 
 	
@@ -301,9 +322,12 @@ public class ChatBot2
 			"I do not understand.",
 			"Please stop.",
 			"So, would you like to go for a walk?",
-			"Could you say that again?"
+			"Could you say that again?",
+			"Would you please say someting productive?",
+			"It would be great if we can talk more about the money",
+			"Stop using your brain and just follow my instructions."
 	};
-	private String [] randomAngryResponses = {"I hope you have a bad day.", "My family will starve to death.", "Do you want your money or not?!"};
-	private String [] randomHappyResponses = {"My Family will be very happy.", "Wakanda Forever", "You make me feel like a brand new pair of shoes."};
+	private String [] randomAngryResponses = {"I hope you have a bad day.", "My family will starve to death.", "Do you want your money or not?!","You are making a big mitake sir.","You are wasting my time","Who do you think you are?"};
+	private String [] randomHappyResponses = {"My Family will be very happy.", "Wakanda Forever", "You make me feel like a brand new pair of shoes.","I will be able to gemy my money back."};
 	
 }
