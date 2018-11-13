@@ -15,12 +15,12 @@ public class ChatBotRunner
 	{
 		ChatBot1 chatbot1 = new ChatBot1();//Felix wilking's chat bot
 		ChatBot2 chatbot2 = new ChatBot2();//Zhi feng's chatbot
-		//ChatBot3 chatbot3 = new ChatBot3();// Ryan wu's chat bot
+		ChatBot3 chatbot3 = new ChatBot3();// Ryan wu's chat bot
 		WesternUnion WesternUnion = new WesternUnion();//Mohammed Uddins Chat bot
 
 		chatbot1.chatLoop();
 		chatbot2.chatLoop();
-		//chatbot3.chatLoop();
+		chatbot3.chatLoop();
 		WesternUnion.chatLoop();
 	}
 }
